@@ -33,6 +33,6 @@ internal class CreateProductCommandHandle
         //TODO
         //save to database
         //return CreateProductResult result
-        return new CreateProductResult(new Guid());
+        return new CreateProductResult(Guid.NewGuid());
     }
 }
