@@ -4,7 +4,7 @@ public record GetProductByIdQuery(Guid Id) : IQuery<GetProductByIdResult>;
 
 public record GetProductByIdResult(Product Product);
 
-public class GetProductByIdQueryHandler(IDocumentSession session, Logger<GetProductByIdQueryHandler> logger)
+public class GetProductByIdQueryHandler(IDocumentSession session, ILogger<GetProductByIdQueryHandler> logger)
     : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
 
 {
