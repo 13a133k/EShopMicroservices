@@ -4,6 +4,8 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <!--        <LangVersion>preview</LangVersion>  &lt;!&ndash; Add this line for docker compose&ndash;&gt;-->
     </PropertyGroup>
 
     <ItemGroup>
