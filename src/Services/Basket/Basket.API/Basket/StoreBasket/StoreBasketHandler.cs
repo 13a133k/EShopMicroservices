@@ -23,16 +23,12 @@ public class StoreBasketCommandValidator : AbstractValidator<StoreBasketCommand>
     }
 }
 
-public class StoreBasketCommandHandler
+public class StoreBasketCommandHandler(IBasketRepository repository)
     : ICommandHandler<StoreBasketCommand, StoreBasketResult>
 {
     public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
     {
-        var cart = new ShoppingCart();
-
-        //TODO: store basket in database(use Marten upsert - if exist = update,is not exist insert)
-        //TODO: update chach
-
-        return new StoreBasketResult("swm");
+        var newCart = await repository.StoreBasket(command.Cart, cancellationToken);
+        return new StoreBasketResult(newCart.UserName);
     }
 }
