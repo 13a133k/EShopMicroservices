@@ -1,0 +1,22 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.4"
+services:
+  catalog.api:
+    build:
+      context: "C:\\Users\\Legion\\Desktop\\microservices_C#\\src"
+      dockerfile: "C:\\Users\\Legion\\Desktop\\microservices_C#\\src\\Services\\Catalog\\\
+        Catalog.API\\Dockerfile"
+      target: "build"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Catalog.API.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+    image: "catalogapi:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\Legion\\.nuget\\packages:/root/.nuget/packages"
+    - "C:\\Users\\Legion\\Desktop\\microservices_C#\\src\\Services\\Catalog\\Catalog.API:/app:rw"
+    - "C:\\Users\\Legion\\Desktop\\microservices_C#\\src:/src:rw"
+    working_dir: "/app"
