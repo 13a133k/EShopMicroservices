@@ -1,3 +1,4 @@
+using BuildingBlocks.Exceptions.Handler;
 using Marten;
 using Weasel.Core;
 
@@ -23,6 +24,8 @@ builder.Services.AddMarten(opts =>
 }).UseLightweightSessions();
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
 
 var app = builder.Build();
 
@@ -32,6 +35,6 @@ app.MapCarter();
 if (app.Environment.IsDevelopment())
 {
 }
-
+app.UseExceptionHandler(options => {});
 
 app.Run();
