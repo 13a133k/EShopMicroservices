@@ -24,6 +24,24 @@ builder.Services.AddMarten(opts =>
 }).UseLightweightSessions();
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+
+// instead of that we use Scrutor library for Decorator Pattern 
+// builder.Services.AddScoped<IBasketRepository>(provider =>
+// {
+//    var basketRepository = provider.GetRequiredService<BasketRepository>();
+//    return new CachedBasketRepository(basketRepository,provider.GetRequiredService<IDistributedCache>());
+// });
+
+builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis");
+    //options.InstanceName = "Basket";
+});
+
+
+
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 
