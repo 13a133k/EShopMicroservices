@@ -33,3 +33,9 @@ volumes:
     build:
       context: .
       dockerfile: Services/Discount.Grpc/Dockerfile
+
+  discount.grpc:
+    image: discount.grpc
+    build:
+      context: .
+      dockerfile: Services/Discount.Grpc/Dockerfile
