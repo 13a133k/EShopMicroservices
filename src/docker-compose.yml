@@ -27,3 +27,9 @@ volumes:
   postgres_basket:
 
 
+
+  discount.grpc:
+    image: discount.grpc
+    build:
+      context: .
+      dockerfile: Services/Discount.Grpc/Dockerfile
