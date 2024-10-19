@@ -18,10 +18,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Services\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="Protos\Discount.proto" />
       <Protobuf Include="Protos\Discount.proto" GrpcServices = "Server"/>
     </ItemGroup>
