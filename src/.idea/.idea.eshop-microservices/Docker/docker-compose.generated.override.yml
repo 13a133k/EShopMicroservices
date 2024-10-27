@@ -1,22 +1,40 @@
 # This is a generated file. Not intended for manual editing.
 version: "3.4"
 services:
-  catalog.api:
+  discount.grpc:
     build:
       context: "C:\\Users\\Legion\\Desktop\\microservices_C#\\src"
-      dockerfile: "C:\\Users\\Legion\\Desktop\\microservices_C#\\src\\Services\\Catalog\\\
-        Catalog.API\\Dockerfile"
-      target: "build"
+      dockerfile: "C:\\Users\\Legion\\Desktop\\microservices_C#\\src\\Services\\Discount\\\
+        Dockerfile"
+      target: "base"
+      args:
+        BUILD_CONFIGURATION: "Debug"
     command: []
     entrypoint:
-    - "dotnet"
-    - "/app/bin/Debug/net8.0/Catalog.API.dll"
+    - "/opt/rider-debugger/linux-x64/JetBrains.Debugger.Worker"
+    - "--runtimeconfig"
+    - "/opt/rider-debugger/JetBrains.Debugger.Worker.runtimeconfig.json"
+    - "--mode=server"
+    - "--frontend-port=57100"
+    - "--backend-port=57300"
+    - "--timeout=60"
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
-    image: "catalogapi:dev"
-    ports: []
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      RIDER_DEBUGGER_LOG_DIR: "/var/opt/rider-debugger"
+      RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
+    image: "discountgrpc:dev"
+    ports:
+    - "127.0.0.1:57000:57100"
+    - "127.0.0.1:57200:57300"
     volumes:
     - "C:\\Users\\Legion\\.nuget\\packages:/root/.nuget/packages"
-    - "C:\\Users\\Legion\\Desktop\\microservices_C#\\src\\Services\\Catalog\\Catalog.API:/app:rw"
+    - "C:\\Users\\Legion\\Desktop\\microservices_C#\\src\\Services\\Discount:/app:rw"
     - "C:\\Users\\Legion\\Desktop\\microservices_C#\\src:/src:rw"
+    - "C:\\Users\\Legion\\AppData\\Local\\JetBrains\\RiderRemoteDebugger\\2024.2.5\\\
+      Linux64:/opt/rider-debugger"
+    - "C:\\Users\\Legion\\AppData\\Local\\JetBrains\\Installations\\Rider223_000\\\
+      bin:/etc/opt/rider-debugger/backend-log.xml"
+    - "C:\\Users\\Legion\\AppData\\Local\\JetBrains\\Rider2024.2\\log\\DebuggerWorker\\\
+      JetBrains.Debugger.Worker.2024_10_23_01_01_11:/var/opt/rider-debugger:rw"
     working_dir: "/app"
