@@ -34,3 +34,9 @@ volumes:
 
 
 
+
+  ordering.api:
+    image: ordering.api
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
