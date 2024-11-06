@@ -11,7 +11,7 @@ public class Customer : Entity<CustomerId>
         ArgumentException.ThrowIfNullOrWhiteSpace(nameof(name), name);
         ArgumentException.ThrowIfNullOrWhiteSpace(nameof(email), email);
 
-        var customer = new Customer()
+        var customer = new Customer
         {
             Id = id,
             Name = name,
