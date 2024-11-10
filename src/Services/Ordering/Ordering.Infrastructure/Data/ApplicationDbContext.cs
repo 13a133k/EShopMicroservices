@@ -11,7 +11,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Customer> Customers => Set<Customer>();
 
-    public DbSet<Product> Type => Set<Product>();
+    public DbSet<Product> Products => Set<Product>();
 
     public DbSet<Order> Orders => Set<Order>();
 

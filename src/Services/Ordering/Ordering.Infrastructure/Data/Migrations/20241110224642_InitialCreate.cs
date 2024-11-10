@@ -29,7 +29,7 @@ namespace Ordering.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Type",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -42,7 +42,7 @@ namespace Ordering.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Type", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -113,9 +113,9 @@ namespace Ordering.Infrastructure.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Type_ProductId",
+                        name: "FK_OrderItems_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "Type",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -152,7 +152,7 @@ namespace Ordering.Infrastructure.Data.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Type");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Customers");
