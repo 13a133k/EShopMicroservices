@@ -8,11 +8,12 @@ public static class DependencyInjection
     {
         //services.AddTransient<IOrderService, OrderService>();
         //services.AddTransient<IOrderRepository, OrderRepository>();
-        
-        //services.AddMediatR(cnf=>{
-            //cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-        //})
-        
+
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        });
+
         return services;
     }
 }
