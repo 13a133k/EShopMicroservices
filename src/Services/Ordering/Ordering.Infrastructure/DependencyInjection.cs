@@ -14,26 +14,14 @@ public static class DependencyInjection
         // Add services to the container.
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
-        
-        
+
+
         services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
             options.UseSqlServer(connectionString);
         });
 
-        
-        // services.AddDbContext<ApplicationDbContext>((sp, options) =>
-        // {
-        //     options.AddInterceptors(sp.GetService<ISaveChangesInterceptor>());
-        //     options.UseSqlServer(connectionString);
-        // });
-
-        // services.AddDbContext<ApplicationDbContext>(options =>
-        // {
-        //     options.AddInterceptors(new AuditableEntityInterceptor());
-        //     options.UseSqlServer(connectionString);
-        // });
 
         return services;
     }
