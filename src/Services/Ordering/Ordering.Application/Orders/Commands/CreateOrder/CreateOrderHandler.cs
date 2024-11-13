@@ -11,6 +11,8 @@ public class CreateOrderHandler(IApplicationDbContext dbContext)
         dbContext.Orders.Add(order);
         await dbContext.SaveChangesAsync(cancellationToken);
 
+        // there is bug which is not return order Id value
+        
         return new CreateOrderResult(order.Id.Value);
     }
 
@@ -35,7 +37,8 @@ public class CreateOrderHandler(IApplicationDbContext dbContext)
             orderDto.BillingAddress.ZipCode);
 
         var newOrder = Order.Create(
-            id: OrderId.Of(orderDto.Id),
+            // there is bug which is not return order Id value
+            id: OrderId.Of(Guid.NewGuid()),
             customerId: CustomerId.Of(orderDto.CustomerId),
             orderName: OrderName.Of(orderDto.OrderName),
             shippingAddress: shippingAddress,
