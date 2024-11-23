@@ -12,7 +12,7 @@ public class CreateOrderHandler(IApplicationDbContext dbContext)
         await dbContext.SaveChangesAsync(cancellationToken);
 
         // there is bug which is not return order Id value
-        
+                
         return new CreateOrderResult(order.Id.Value);
     }
 
