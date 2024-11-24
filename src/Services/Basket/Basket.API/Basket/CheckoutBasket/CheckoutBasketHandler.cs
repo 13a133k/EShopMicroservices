@@ -35,7 +35,7 @@ public class CheckoutBasketHandler
             return new CheckoutBasketResult(false);
         }
 
-        var eventMessage = command.Adapt<BasketCheckoutEvent>();
+        var eventMessage = command.BasketCheckoutDto.Adapt<BasketCheckoutEvent>();
         eventMessage.TotalPrice = basket.TotalPrice;
 
         await publishEndpoint.Publish(eventMessage, cancellationToken);
