@@ -28,11 +28,18 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="discountdb" uuid="3f8d8133-ab3e-4233-a95d-bc7f2e881535">
+    <data-source source="LOCAL" name="orderdb_@localhost" uuid="e5468f6d-92e4-4483-8f44-955ee031d714">
+      <driver-ref>sqlserver.jb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
+      <jdbc-url>Server=localhost,1434</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="discountdb [2]" uuid="42eef3a0-a02f-4631-a3bf-c9c456ec1313">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Legion\Desktop\microservices_C#\src\Services\Discount.Grpc\discountdb</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\Legion\Desktop\microservices_CSharp\src\Services\Discount\discountdb</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
       </jdbc-additional-properties>
@@ -45,13 +52,6 @@
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.45.1/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar</url>
         </library>
       </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="orderdb_@localhost" uuid="e5468f6d-92e4-4483-8f44-955ee031d714">
-      <driver-ref>sqlserver.jb</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
-      <jdbc-url>Server=localhost,1434</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>
