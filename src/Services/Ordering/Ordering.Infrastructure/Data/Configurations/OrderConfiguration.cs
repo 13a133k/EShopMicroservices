@@ -111,6 +111,7 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
                 s => s.ToString(),
                 dbStatus => (OrderStatus)Enum.Parse(typeof(OrderStatus), dbStatus));
 
-        builder.Property(o => o.TotalPrice);
+        builder.Property(o => o.TotalPrice)
+            .HasPrecision(18, 2);
     }
  }

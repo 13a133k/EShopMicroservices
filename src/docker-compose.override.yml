@@ -112,6 +112,12 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
+      - Kestrel__EndPoints__WebApi__Protocols=Http1
+      - Kestrel__EndPoints__WebApi__Url=http://+:8080
+      - Kestrel__EndPoints__Https__Protocols=Http1AndHttp2
+      - Kestrel__EndPoints__Https__Url=https://+:8081
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123bob123!!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/etc/ssl/certs/aspnetcore.pfx
       - ConnectionStrings__Database=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN!b1234567@8;Encrypt=False;TrustServerCertificate=True
       - MessageBroker__Host=amqp://ecommerce-mq:5672
       - MessageBroker__UserName=guest
@@ -126,3 +132,4 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - C:/Users/Legion/Desktop/microservices_CSharp/src:/etc/ssl/certs:ro
