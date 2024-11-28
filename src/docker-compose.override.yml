@@ -59,6 +59,10 @@ services:
       - ConnectionStrings__Database=Server=catalogDb;Port=5432;Database=CatalogDb;user Id=postgres;Password=postgres;Include Error Detail = true
       - Kestrel__EndPoints__WebApi__Protocols=Http1
       - Kestrel__EndPoints__WebApi__Url=http://+:8080
+      - Kestrel__EndPoints__Https__Protocols=Http1AndHttp2
+      - Kestrel__EndPoints__Https__Url=https://+:8081
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123bob123!!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/etc/ssl/certs/aspnetcore.pfx
     depends_on:
       - catalogdb
     ports:
@@ -67,6 +71,7 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - C:/Users/Legion/Desktop/microservices_CSharp/src:/etc/ssl/certs:ro
 
   basket.api:
     environment:
