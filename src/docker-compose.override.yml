@@ -138,3 +138,24 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - C:/Users/Legion/Desktop/microservices_CSharp/src:/etc/ssl/certs:ro
+  
+  yarpapigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - Kestrel__EndPoints__Https__Protocols=Http1AndHttp2
+      - Kestrel__EndPoints__Https__Url=https://+:8081
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123bob123!!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/etc/ssl/certs/aspnetcore.pfx
+    depends_on:
+      - catalog.api
+      - basket.api
+      - ordering.api
+    ports:
+        - "6004:8080"
+        - "6064:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - C:/Users/Legion/Desktop/microservices_CSharp/src:/etc/ssl/certs:ro
